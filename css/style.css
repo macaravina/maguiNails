@@ -8,6 +8,9 @@
   background-repeat: no-repeat;
   background-size: cover; }
 
+main {
+  padding: 15px; }
+
 /*HEADER*/
 header {
   display: flex;
@@ -46,53 +49,62 @@ div h1 {
   text-align: center;
   margin-bottom: 20px; }
 
-.caja1, .aclaraciones {
+.fotos {
+  width: 80vw !important;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 26px 26px 26px 26px; }
+
+div p, div .aclaraciones {
   background-color: rgba(255, 154, 173, 0.863);
   color: rgba(70, 27, 53, 0.836);
   text-align: center;
   border-radius: 26px 26px 26px 26px;
-  margin: 30px;
-  padding: 10px;
-  font-size: 15px; }
+  padding: 15px;
+  font-size: 15px;
+  width: 80vw;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px; }
 
 /*FIN INDEX*/
 /*SERVICIOS*/
-div .servicios {
-  justify-content: center;
-  margin: 20px; }
+div div section:hover {
+  transform: scale(1.04) translateY(-5px);
+  transition: all 300ms;
+  box-shadow: 0 15px 15px rgba(145, 40, 72, 0.74); }
 
-div div div div {
+div div section div {
   background-color: #b8f2e6;
   color: #ff477e;
   height: 100%;
   padding: 30px; }
-  div div div div table {
+  div div section div table {
     margin-bottom: 20px; }
-    div div div div table .tablaAncho {
-      width: 100%; }
-    div div div div table tr td {
+    div div section div table tr td {
       padding: 5px; }
-    div div div div table tr th {
+    div div section div table tr th {
       color: #499796;
       font-size: 22px; }
-  div div div div button {
-    background-color: #ff477e;
-    border-radius: 26px;
-    border-color: #ff477e;
-    position: absolute;
-    bottom: 20px;
-    transition: all 300ms; }
-    div div div div button:hover {
-      transform: scale(1.08) translateY(-5px);
-      cursor: pointer;
-      transition: all 300ms;
-      box-shadow: 0 10px 10px rgba(145, 40, 72, 0.74); }
-    div div div div button a {
-      text-decoration: none;
-      color: #b8f2e6;
-      padding: 10px; }
-      div div div div button a:hover {
-        color: #b8f2e6; }
+
+div div section button {
+  background-color: #ff477e;
+  border-radius: 26px;
+  border-color: #ff477e;
+  position: absolute;
+  bottom: 20px;
+  transition: all 300ms; }
+  div div section button:hover {
+    transform: scale(1.04) translateY(-5px);
+    cursor: pointer;
+    transition: all 300ms;
+    box-shadow: 0 3px 3px rgba(145, 40, 72, 0.74); }
+  div div section button a {
+    text-decoration: none;
+    color: #b8f2e6;
+    padding: 10px; }
+    div div section button a:hover {
+      color: #b8f2e6; }
 
 /*FIN SERVICIOS*/
 /*GRID GALERIA*/
@@ -176,18 +188,40 @@ div div div div {
 
 /*FIN CONTACTO*/
 /*FOOTER*/
-.footer {
-  background-image: linear-gradient(#e7bfd7, #faf3dd);
+footer {
+  background-color: rgba(250, 243, 221, 0.575);
+  height: 100%;
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  height: 90px; }
-  .footer__link {
-    padding: 5px; }
-  .footer__img {
-    max-width: 20px;
-    box-sizing: content-box; }
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center; }
+  footer nav ul {
+    padding: 0; }
+    footer nav ul li {
+      padding: 5px;
+      list-style: none;
+      display: list-item;
+      text-align: left;
+      transition: 0.5s; }
+      footer nav ul li:hover {
+        background-color: #e7c6d7;
+        border-radius: 200px 200px 200px 200px; }
+      footer nav ul li a {
+        text-decoration: none;
+        color: #66bebd;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 5px; }
+        footer nav ul li a:hover {
+          color: white; }
+  footer div a {
+    text-decoration: none;
+    margin: 5px; }
+    footer div a img {
+      max-width: 20px; }
+  footer div iframe {
+    margin: 20px; }
 
 /*FIN FOOTER*/
 /*ERROR*/
@@ -220,12 +254,14 @@ div div div div {
       width: 100%; }
 
 /*FIN ERROR*/
+@media only screen and (max-width: 599px) {
+  footer div iframe {
+    display: none; } }
+
 /*pantallas medianas*/
 @media only screen and (min-width: 600px) {
   /*SERVICIOS*/
   .servicios {
-    margin-left: 70px;
-    margin-right: 70px;
     justify-content: center; }
   /*FIN SERVICIOS*/
   /*GALERIA*/
@@ -265,15 +301,13 @@ div div div div {
   div h1 {
     font-size: 60px;
     margin-bottom: 30px; }
-  div .fotos {
-    width: 900px !important;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 26px 26px 26px 26px; }
-  .caja1, .aclaraciones {
-    margin-left: 180px;
-    margin-right: 180px; }
   /*FIN INDEX*/
+  /*SERVICIOS*/
+  .servicios {
+    margin-left: 70px;
+    margin-right: 70px;
+    justify-content: center; }
+  /*FIN SERVICIOS*/
   /*GALERIA*/
   #gridGaleria {
     grid-template-columns: repeat(3, 1fr);
