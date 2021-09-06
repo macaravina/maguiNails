@@ -1,10 +1,36 @@
 //variables
 
-$colorRosa: rgb(248, 79, 130);
+$colorRosa: rgb(244, 132, 152);
 $colorVerde: rgb(102, 190, 189);
-$colorFondoRosa: rgb(231, 198, 215);
-$borde: 26px;
-$margenes: 30px;
+$colorLila: rgb(231, 198, 215);
+$colorFondoLila: rgba(231, 198, 215, 0.863);
+$colorFondoRosa: rgba(244, 132, 152, 0.863);
+$colorVerdeA: rgb(184, 242, 230);
+$colorFondoVerde: rgba(184, 242, 230, 0.863);
+$borde: 15px;
+
+@mixin box ( $colorFondo, $colorTexto, $borde, $boxShadow, $fontSize, $ancho, $margenTop, $margenBottom, $margenLeft, $margenRight, $padding, $alineacion) {
+    background-color: $colorFondo;
+    color: $colorTexto;
+    border-radius: $borde;
+    box-shadow: $boxShadow;
+    font-size: $fontSize;
+    width: $ancho;
+    margin-top: $margenTop;
+    margin-bottom: $margenBottom;
+    margin-left: $margenLeft;
+    margin-right: $margenRight;
+    padding: $padding;
+    text-align: $alineacion;
+}
+
+@mixin flex ( $flexDirection, $wrap, $justify, $align) {
+    display: flex;
+    flex-direction: $flexDirection;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $align;
+}
 
 
 
@@ -21,34 +47,27 @@ $margenes: 30px;
     background-size: cover;
 }
 
-main{
-    padding: 15px;
-}
-
-
 /*HEADER*/
 header{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    @include flex( column, nowrap, space-between, center)
+    /*@include box ( rgba(250, 243, 221, 0.575), $colorVerde, $borde, none, 15px, auto, 40px, 40px, 0, 0, 0, center)*/
     background-color: rgba(250, 243, 221, 0.575);
-    padding-top: 3px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 
     img{
-        max-width: 130px;
+        max-width: 150px;
+
+        &:hover{
+            transition: all 300ms;
+            transform: scale(1.2,1.2);
+        }
     }
 
     .navegador{
-
-        &__lista{
-            padding: 0;
-        }
-
+        
         &__items{
-            padding: 0;
             list-style: none;
-            display: list-item;
             text-align: center;
             transition: 0.5s;
 
@@ -63,7 +82,7 @@ header{
             color: $colorVerde;
             font-size: 15px;
             font-weight: 600;
-
+            
             &:hover{
                 color: white;
             }
@@ -74,80 +93,119 @@ header{
 
 
 /*INDEX*/
-div{
-    h1{
-        color: $colorRosa;
-        font-weight: 500;
-        font-size: 50px;
-        text-align: center;
-        margin-bottom: 20px; 
+section{
+    .index{
+        margin-left: auto;
+        margin-right: auto;
+        width: 85vw;
+        border-radius: $borde;
+
+        &_parrafo{
+            @include box( $colorFondoRosa, $colorVerdeA, $borde, 0 0 10px $colorRosa, 17px, 85vw, 40px, 40px, auto, auto, 15px, center)
+        }
+    }
+
+    .esmalte{
+        @include flex( row, wrap, center, center)
+
+        &_box{
+            position: relative;
+            text-align: center; 
+            margin: 10px;   
+                
+            img{
+                width: 230px;
+                border-radius: $borde;
+                box-shadow: 0 0 10px $colorLila;
+                
+            }
+                
+            &_texto{
+                position: absolute;
+                font-size: 17px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                padding-top: 34%;
+                border-radius: $borde;
+                color: $colorVerdeA;
+                text-shadow: 2px 2px 2px rgba(145, 40, 72, 0.74);
+                font-weight: 600;
+            
+                a{
+                    text-decoration: none;
+                    font-size: 18px;
+                    color: $colorLila;
+                    font-weight: 600;
+
+                    &:hover{
+                        transition: 300ms;
+                        font-size: 20px;
+                    }
+                }
+
+                &:hover{
+                    transition: 300ms;
+                    background-color: $colorFondoRosa;
+                }
+            } 
+        }    
     }
 }
 
-.fotos{
-    width: 80vw !important;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 26px 26px 26px 26px;
-}
-div{
-    p{
-        background-color: rgba(255, 154, 173, 0.863);
-        color: rgba(70, 27, 53, 0.836);
-        text-align: center;
-        border-radius: 26px 26px 26px 26px;
-        padding: 15px; 
-        font-size: 15px;
-        width: 80vw;
-        margin-right: auto;
-        margin-left: auto;
-        margin-top: 30px;
-    }
-}
 
 /*FIN INDEX*/  
 
 
 /*SERVICIOS*/
-div{
-    div{
-        section{
+.servicios{
+    margin-left: 5vw;
+    margin-right: 5vw;
+    justify-content: center;
+
+    section{
+        .card{
             &:hover{
                 transform: scale(1.04) translateY(-5px);
                 transition: all 300ms;
-                box-shadow: 0 15px 15px rgba(145, 40, 72, 0.74);
+                box-shadow: 0 20px 20px rgba(145, 40, 72, 0.74);
             }
-            div{
-                background-color: rgb(184, 242, 230);
-                color: rgb(255, 71, 126);
+            
+            .columna{
+                background-color: $colorVerdeA;
+                color: $colorRosa;
                 height: 100%;
-                padding: 30px;
-                
 
                 table{
-                    margin-bottom: 20px;
+                    margin-bottom: 45px;
+                    width: 100%;
 
                     tr{
                         td{
                             padding: 5px;
+                            padding-left: 10px;
+                            font-size: 15px;
                         }
 
                         th{
-                            color: rgb(73, 151, 150);
-                            font-size: 22px;
+                            color: $colorVerde;
+                            font-size: 1.3rem;
+                            padding: 10px;
                         }
                     }
                 }
             }
 
             button{
-                    
                 background-color: rgb(255, 71, 126);
                 border-radius: $borde;
                 border-color: rgb(255, 71, 126);
                 position: absolute;
-                bottom: 20px;
-                transition: all 300ms;
+                bottom: 10px;
+                margin-left: 10px;
+                
 
                 &:hover{
                     transform: scale(1.04) translateY(-5px);
@@ -155,15 +213,15 @@ div{
                     transition: all 300ms;
                     box-shadow: 0 3px 3px rgba(145, 40, 72, 0.74);
                 }
-
-                                
+                                    
                 a{
                     text-decoration: none;
-                    color: rgb(184, 242, 230);
+                    color: $colorVerdeA;
                     padding: 10px;
+                    text-align: center;
 
                     &:hover{
-                        color: rgb(184, 242, 230);
+                        color: $colorVerde;
                     }
                 }
             }
@@ -173,66 +231,80 @@ div{
 /*FIN SERVICIOS*/
 
 
-/*GRID GALERIA*/
-#gridGaleria{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    justify-items: center;
-    align-items: center;
-    justify-content: space-evenly;
-    grid-row-gap: 10px;
-    grid-column-gap: 5px;
-    padding: 10px;
+/*GALERIA*/
+.galeria{
+    @include flex( row, wrap, center, center)
 
-    .imagenGaleria{
-        width: 140px;
-        height: 140px;
-        border: 4px solid rgb(231, 198, 215);
-        transition: 1.5s;
+    img{
+        width: 28vw;
+        border: 1.5px solid $colorLila;
+        display: inline;
+        margin: 0.5vw;
 
         &:hover{
+            transition: 300ms;
             transform: scale(1.2,1.2);
         }
+        
     }
 }
 /*FIN GALERIA*/
 
 
 /*ACLARACIONES*/
-.aclaraciones{
-    @extend div p;
-        text-align: left;
-        margin: 15px;
-        margin-top: 5px;
+section{
+    .caja1{
+        @include box( $colorFondoVerde, $colorVerde, 70px, 0 0 10px $colorVerde, 17px, auto, 5vw, 5vw, 5vw, 5vw, 35px, left)
+        @include flex(column, wrap, space-around, center)
+        
+        div{
+            img{
+                display: block;
+                margin: auto;
+                width: 70px;
+                margin-top: 10px;
+            }
     
-    &__titulo{
-        color: $colorVerde;
-        font-size: 25px;
-        text-align: center;
+            p{
+                line-height: 25px;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }
     }
-
-    &__lista{
-        list-style-position: inside;
+    
+    .caja2{
+        @extend .caja1;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 250px 250px 70px 70px;
+        
+        ul{
+            list-style-image: url("../img/destellos.png");
+    
+            li{
+                list-style-position: inside;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+    
+        img{
+            border-radius: 300px;
+            width: 30vw;
+        }
     }
-
-    &__item{
-        list-style-image: url("../img/destellos.png");
-        padding: 6px;
+    
+    .gif{
+        width: 35vw;
+        display: block;
+        margin: auto;
     }
 }
 /*FIN ACLARACIONES*/
 
 
-/*GRID CONTACTO*/
-@mixin contacto($colorFondoRosa, $ancho, $borde, $padding, $margin){
-    background-color: $colorFondoRosa;
-    width: 250px;
-    border-radius: $borde;
-    padding: 5px;
-    margin: 5px;
-}
-
+/*CONTACTO*/
 .contacto{
     display: grid;
     grid-template-columns: repeat(2 1fr);
@@ -243,59 +315,78 @@ div{
 
     &__gif{
         grid-area: gifuno;
-        width: 80%;
+        width: 40vw;
+        transition: all 300ms;
+
+        &:hover{
+            transform: scale(1.2,1.2);
+        }
     }
 
     &__form{
         grid-area: form;
         text-align: center;
         align-self: center;
-    }
-
-    &__fieldset{
-        @include contacto(none, 250px, $borde, 5px, 5px);
-        border: 5px solid rgba(184, 242, 230, 0.767);
         color: $colorVerde;
     }
 
-    &__label{
-        background-color: rgb(231, 198, 215);
-        border-radius: 26px 26px 26px 26px;
+    &__fieldset{
+        border: 5px solid rgba(184, 242, 230, 0.767);
+        width: 60vw;
+        border-radius: $borde;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     &__input{
-        @include contacto($colorFondoRosa, 250px, $borde, 5px, 5px);
-        padding-left: 10px;
+        @include box( $colorLila, $colorRosa, $borde, 0 0 5ps rgba(145, 40, 72, 0.74), 15px, 70vw, 5px, 5px, 5px, 5px, 8px, auto)
         border: 2px solid rgb(231, 198, 215);
-        color: rgb(39, 100, 99);
 
         &--newsletter{
             width: 20px;
         }
 
-        &--enviar:hover{
-            box-shadow: 0px 0px 8px 0px rgb(158, 114, 140);
-            color: white;
+        &--enviar{
+            @include box( $colorLila, $colorVerdeA, $borde, 0 0 5ps rgba(145, 40, 72, 0.74), 20px, 30vw, 15px, 5px, 5px, 5px, 8px, auto)
+            border: 2px solid rgb(231, 198, 215);
+            font-weight: 600;
+            letter-spacing: 1.2px;
+
+            &:hover{
+                transition: all 300ms;
+                transform: scale(1.04) translateY(-5px);
+                cursor: pointer;
+                box-shadow: 0 5px 5px $colorVerde;
+                color: $colorVerde;
+            }
         }
+        
+    }
+
+    &__archivo{
+        text-align-last: center;
+        width: 85vw;
     }
 
     &__gifdos{
         grid-area: gifdos;
-        width: 80%;
+        width: 40vw;
+        transition: all 300ms;
+
+        &:hover{
+            transform: scale(1.2,1.2);
+        }
     }
 }
 /*FIN CONTACTO*/
 
 
 /*FOOTER*/
-footer{
+.footer{
+    @include flex( row, wrap, space-evenly, center)
     background-color: rgba(250, 243, 221, 0.575);
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
+    margin-top: 40px;
 
     nav{
         ul{
@@ -335,6 +426,11 @@ footer{
 
             img{
                 max-width: 20px;
+
+                &:hover{
+                    transition: all 300ms;
+                    transform: scale(1.2,1.2);
+                }
             }
         }
     }
@@ -394,46 +490,22 @@ footer{
 /*pantallas medianas*/
 @media only screen and (min-width:600px){
 
-    /*SERVICIOS*/
-    .servicios{
-        justify-content: center;
-    }
-    /*FIN SERVICIOS*/
 
-    /*GALERIA*/
-    #gridGaleria{
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        grid-row-gap: 20px;
-        padding: 20px;
-
-        .imagenGaleria{
-            width: 180px;
-            height: 180px;
-            border: 7px solid rgb(231, 198, 215);
-        }
-    } 
-    /*FIN GALERIA*/
-
-
-    /*GRID CONTACTO*/
-    .contacto{
-        &__fieldset{
-            width: 600px;
-        }
-
-        &__input{
-            width: 300px;
-
-            &--newsletter{
-                width: 20px;
+    /*ACLARACIONES*/
+    section{
+        .caja1{
+            @include flex( row, wrap, space-around, baseline)
+    
+            div{
+                width: 30vw;
             }
         }
+        
+        .caja2{
+            border-radius: 175px 70px 70px 70px;
+        }
     }
-    /*FIN CONTACTO*/
-
-
-
+    /*FIN ACLARACIONES*/
 }
 
 /*pantalla normal*/
@@ -442,12 +514,9 @@ footer{
 
     /*HEADER*/
     header{
-        padding-top: 15px;
-
         img{
-            max-width: 150px;
+            max-width: 200px;
         }
-    
 
         .navegador{
             margin: 15px;
@@ -459,73 +528,63 @@ footer{
         }
     }  
     /*FIN HEADER*/
-
-
-    /*INDEX*/
-    div{
-        h1{
-            font-size: 60px;
-            margin-bottom: 30px; 
-        }
-    }
-    /*FIN INDEX*/
-
-
-    /*SERVICIOS*/
-    .servicios{
-        margin-left: 70px;
-        margin-right: 70px;
-        justify-content: center;
-    }
-    /*FIN SERVICIOS*/
-
-
-    /*GALERIA*/
-    #gridGaleria{
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        grid-row-gap: 40px;
-        padding: 40px;
-
-        .imagenGaleria{
-            width: 300px;
-            height: 300px;
-            border: 7px solid rgb(231, 198, 215);
-        }
-    }
-    /*FIN GALERIA*/
     
 
     /*ACLARACIONES*/
-    .aclaraciones{
-          
-        padding: 20px;
-        margin: 90px;
-        margin-top: 35px;
+    section{
+        .caja1{
+            div{
+                width: 20vw;
+            }
+        }
     
-        &__titulo{
-            font-size: 30px;
-            text-align: center;
+        .caja2{
+            @include flex( row, nowrap, space-around, flex-start)
+            border-radius: 70px 175px 70px 70px;
+        
+            ul{
+                order: -1;
+                padding: 30px;
+            }
+        
+            img{
+                width: 25vw;
+                margin-left: 10px;
+            }
         }
     }
     /*FIN ACLARACIONES*/
 
 
-    /*GRID CONTACTO*/
+    /*CONTACTO*/
     .contacto{
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 1fr;
         grid-template-areas: "gifuno form gifdos";
         justify-content: center;
         align-content: center;
-    
+
+        &__fieldset{
+            width: 50vw;
+        }
+
+        &__input{
+            width: 30vw;        
+        }
+
+        &__archivo{
+            width: 30vw;
+        }
+
         &__gif{
             align-self: start;
+            width: 20vw;
         }
     
         &__gifdos{
             align-self: end;
+            width: 20vw;
         }
     }
-    /*FIN GRID CONTACTO*/
+    /*FIN CONTACTO*/
 }

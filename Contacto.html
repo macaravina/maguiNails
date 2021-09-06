@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
-    
+
 </head>
 
 <body class="body">
@@ -40,40 +40,34 @@
     <!--FIN DE HEADER-->
 
     <!--INICIO DE MAIN-->
-    <main class="contacto">
-        <img class="contacto__gif" src="img/gif3.gif">
-        <form class="contacto__form">
-            <fieldset class="contacto__fieldset">
-                <label class="contacto__label" for="nombre"></label>
-                <input class="contacto__input" type="text" id="nombre" placeholder="Nombre completo">
-
-                <br>
-                <label class="contacto__label" for="mail"></label>
-                <input class="contacto__input" type="text" id="mail" placeholder="Mail">
-
-                <br>
-                <label class="contacto__label" for="telefono"></label>
-                <input class="contacto__input" type="text" id="telefono" placeholder="Telefono">
-
-                <br>
-                <textarea class="contacto__input" cols="30" rows="10" placeholder="Dejanos tu comentario"></textarea>
-
-                <br>
-                <input class="contacto__input" type="file">
-
-                <br>
-                <label for="newsletter">Suscribirme al Newsletter</label>
-                <input class="contacto__input contacto__input--newsletter" type="checkbox">
-                <br>
-                <input class="contacto__input contacto__input--enviar" type="submit" value="Enviar Formulario">
-            </fieldset>
-        </form>
-        <img class="contacto__gifdos" src="img/gif4.gif">
+    <main>
+        <section class="contacto">
+            <img class="contacto__gif" src="img/gif3.gif">
+            <form class="contacto__form">
+                <fieldset class="contacto__fieldset">
+                    <label for="nombre"></label>
+                    <input class="contacto__input" type="text" id="nombre" placeholder="Nombre completo">
+                    <label for="mail"></label>
+                    <input class="contacto__input" type="text" id="mail" placeholder="Mail">
+                    <label for="telefono"></label>
+                    <input class="contacto__input" type="text" id="telefono" placeholder="Telefono">
+                    <textarea class="contacto__input" cols="30" rows="10"
+                        placeholder="Dejanos tu comentario"></textarea>
+                    <input class="contacto__archivo" type="file">
+                    <br>
+                    <label class="contacto__archivo" for="newsletter">Suscribirme al Newsletter</label>
+                    <input class="contacto__input--newsletter" type="checkbox">
+                    <br>
+                    <input class="contacto__input--enviar" type="submit" value="ENVIAR">
+                </fieldset>
+            </form>
+            <img class="contacto__gifdos" src="img/gif4.gif">
+        </section>
     </main>
     <!--FIN DE MAIN-->
 
     <!--INICIO DE FOOTER-->
-    <footer>
+    <footer class="footer">
         <div>
             <nav>
                 <ul>
