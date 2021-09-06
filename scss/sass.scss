@@ -41,52 +41,129 @@ $borde: 15px;
     font-family: 'Dosis', sans-serif;
 }
 
-.body{
+body{
     background-image: url("../img/canva.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 /*HEADER*/
-header{
-    @include flex( column, nowrap, space-between, center)
-    /*@include box ( rgba(250, 243, 221, 0.575), $colorVerde, $borde, none, 15px, auto, 40px, 40px, 0, 0, 0, center)*/
+.header{
     background-color: rgba(250, 243, 221, 0.575);
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 40px;
 
-    img{
-        max-width: 150px;
+    #menu_on{
+        display: inline-block;
+        width:30px;
+        height: 20px;
+        position: relative;
+        z-index: 2;
+        margin-left: 45px;
 
+        span{
+            width: 100%;
+            height: 4px;
+            border-radius: 4px;
+            display: block;
+            position: absolute;
+            background-color: $colorVerde;
+            transition: all 0.25s ease; 
+            transform-origin : 0px 100%;    
+
+            &:nth-child(2){
+                top: calc(50% - 2px);
+            }
+             
+            &:nth-child(3){
+                bottom: 0;
+            }   
+        }
+    }
+
+    .logo{
+        max-width: 200px;
+        margin: auto;
+        display: block;
+    
         &:hover{
             transition: all 300ms;
             transform: scale(1.2,1.2);
         }
     }
 
-    .navegador{
+    nav{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left:-300px; 
+        width: 300px;
+        z-index: 1;
+        padding-top: 90px;
+        opacity: 0;
+        transition: all 0.75s;
+        font-size: 1.2em;
+        overflow-y: auto;
+        background-color: $colorLila;
         
-        &__items{
+        ul{
             list-style: none;
-            text-align: center;
-            transition: 0.5s;
+      
+            li{
+      
+                a{
+                    display:block;
+                    text-decoration: none;
+                    padding: 10px;
+                    color: $colorVerdeA;
+                    border-bottom: 1px solid rgba(255,255,255,0.2);
+                    transition: all 0.25s;
 
-            &:hover{
-                background-color: rgb(231, 198, 215);
-                border-radius: 200px 200px 200px 200px;
+                    &:hover{
+                        color: $colorVerde;
+                    }
+                }
+
+                div{
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    a{
+                        display: inline;
+                        
+
+                        img{
+                            max-width: 20px;
+                            display: inline;
+                            align-items: center;
+                        
+                            &:hover{
+                                transition: all 300ms;
+                                transform: scale(1.2,1.2);
+                            }
+                        }
+                    }
+                }
             }
         }
+    }    
+}        
 
-        &__link{
-            text-decoration: none;
-            color: $colorVerde;
-            font-size: 15px;
-            font-weight: 600;
-            
-            &:hover{
-                color: white;
-            }
-        }
+.visible_menu{
+    span:nth-child(1){
+	    transform: rotate(45deg) translate(-2px,1px); 
+    }
+
+    span:nth-child(2){
+	    opacity: 0;
+    }
+    
+    span:nth-child(3){
+	    transform: rotate(-45deg) translate(-3px,3px); 
+    }
+
+    nav{
+        left: 0;
+        opacity: 1;
     }
 }
 /*FIN DE HEADER*/
@@ -509,26 +586,7 @@ section{
 }
 
 /*pantalla normal*/
-@media only screen and (min-width:992px){
-
-
-    /*HEADER*/
-    header{
-        img{
-            max-width: 200px;
-        }
-
-        .navegador{
-            margin: 15px;
-
-            &__items{
-                display: inline;
-                padding: 15px;
-            }
-        }
-    }  
-    /*FIN HEADER*/
-    
+@media only screen and (min-width:992px){   
 
     /*ACLARACIONES*/
     section{
