@@ -29,10 +29,6 @@ body {
       background-color: #66bebd;
       transition: all 0.25s ease;
       transform-origin: 0px 100%; }
-      .header #menu_on span:nth-child(2) {
-        top: calc(50% - 2px); }
-      .header #menu_on span:nth-child(3) {
-        bottom: 0; }
   .header .logo {
     max-width: 200px;
     margin: auto;
@@ -89,6 +85,12 @@ body {
 .visible_menu nav {
   left: 0;
   opacity: 1; }
+
+#menu_on span:nth-child(2) {
+  top: calc(50% - 2px); }
+
+#menu_on span:nth-child(3) {
+  bottom: 0; }
 
 /*FIN DE HEADER*/
 /*INDEX*/
