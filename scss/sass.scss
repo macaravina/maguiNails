@@ -152,12 +152,12 @@ body{
     span:nth-child(3){
 	    transform: rotate(-45deg) translate(-3px,3px); 
     }
-}
-.visible_menu nav{
-	left: 0;
-	opacity: 1;
-}
 
+    nav{
+        left: 0;
+        opacity: 1;
+    }
+}
 #menu_on span:nth-child(2){
 	top: calc(50% - 2px);
 }
@@ -457,7 +457,7 @@ section{
 /*FIN CONTACTO*/
 
 
-/*FOOTER
+/*FOOTER*/
 .footer{
     @include flex( row, wrap, space-evenly, center)
     background-color: rgba(250, 243, 221, 0.575);
