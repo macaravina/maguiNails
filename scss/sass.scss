@@ -42,94 +42,58 @@ $borde: 15px;
 }
 
 body{
-    background-image: url("../img/canva.png");
-    background-repeat: no-repeat;
+    background-image: url("../img/background.png");
     background-size: cover;
 }
 
 /*HEADER*/
-.header{
+header{
     background-color: rgba(250, 243, 221, 0.575);
-    margin-top: 20px;
-    margin-bottom: 40px;
-
-    #menu_on{
-        display: inline-block;
-        width:30px;
-        height: 20px;
-        position: relative;
-        z-index: 2;
-        margin-left: 45px;
-
-        span{
-            width: 100%;
-            height: 4px;
-            border-radius: 4px;
-            display: block;
-            position: absolute;
-            background-color: $colorVerde;
-            transition: all 0.25s ease; 
-            transform-origin : 0px 100%;      
-        }
-    }
+    padding-top: 20px;
+    margin-bottom: 20px;
+    @include flex( column, nowrap, center, center);
 
     .logo{
-        max-width: 200px;
-        margin: auto;
-        display: block;
+        max-width: 170px;
     
         &:hover{
             transition: all 300ms;
-            transform: scale(1.2,1.2);
+            transform: scale(1.1,1.1);
         }
     }
-
+    
     nav{
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left:-300px; 
-        width: 300px;
-        z-index: 1;
-        padding-top: 90px;
-        opacity: 0;
-        transition: all 0.75s;
-        font-size: 1.2em;
-        overflow-y: auto;
-        background-color: $colorLila;
-        
-        ul{
-            list-style: none;
-      
-            li{
-      
-                a{
-                    display:block;
-                    text-decoration: none;
-                    padding: 10px;
-                    color: $colorVerdeA;
-                    border-bottom: 1px solid rgba(255,255,255,0.2);
-                    transition: all 0.25s;
-
-                    &:hover{
-                        color: $colorVerde;
-                    }
+        div{
+            
+            .navbar-toggler{
+                margin-top: 20px;
+                transition: all 300ms;
+                
+                &:hover{
+                    transform: scale(1.1,1.1);
                 }
+            }
+            
+            ul{
 
-                div{
-                    margin-top: 10px;
-                    margin-bottom: 10px;
+                li{
+                    border-bottom: 1px solid rgba(255,255,255,0.2);
+
                     a{
-                        display: inline;
-                        
+                        text-decoration: none;
+                        transition: all 300ms;
+
+                        &:hover{
+                            transform: scale(1.02,1.02);
+                        }
 
                         img{
                             max-width: 20px;
-                            display: inline;
-                            align-items: center;
-                        
+                            margin: 8px;
+                            margin-left: auto;
+                            transition: all 300ms;
+
                             &:hover{
-                                transition: all 300ms;
                                 transform: scale(1.2,1.2);
                             }
                         }
@@ -137,33 +101,7 @@ body{
                 }
             }
         }
-    }    
-}        
-
-.visible_menu{
-    span:nth-child(1){
-	    transform: rotate(45deg) translate(-2px,1px); 
     }
-
-    span:nth-child(2){
-	    opacity: 0;
-    }
-    
-    span:nth-child(3){
-	    transform: rotate(-45deg) translate(-3px,3px); 
-    }
-
-    nav{
-        left: 0;
-        opacity: 1;
-    }
-}
-#menu_on span:nth-child(2){
-	top: calc(50% - 2px);
-}
- 
-#menu_on span:nth-child(3){
-bottom: 0;
 }
 /*FIN DE HEADER*/
 
@@ -173,16 +111,20 @@ section{
     .index{
         margin-left: auto;
         margin-right: auto;
-        width: 85vw;
+        width: 88vw;
         border-radius: $borde;
 
         &_parrafo{
-            @include box( $colorFondoRosa, $colorVerdeA, $borde, 0 0 10px $colorRosa, 17px, 85vw, 40px, 40px, auto, auto, 15px, center)
+            @include box( $colorFondoRosa, $colorVerdeA, $borde, 0 0 10px $colorRosa, 1rem, 88vw, 40px, 40px, auto, auto, 15px, center);
+
+            p{
+                margin: 0;
+            }
         }
     }
 
     .esmalte{
-        @include flex( row, wrap, center, center)
+        @include flex( row, wrap, center, center);
 
         &_box{
             position: relative;
@@ -198,12 +140,13 @@ section{
                 
             &_texto{
                 position: absolute;
-                font-size: 17px;
+                font-size: 1rem;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 width: 100%;
                 height: 100%;
+                padding: 5px;
                 padding-top: 34%;
                 border-radius: $borde;
                 color: $colorVerdeA;
@@ -237,15 +180,16 @@ section{
 
 /*SERVICIOS*/
 .servicios{
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: 4vw;
+    margin-right: 4vw;
     justify-content: center;
 
     section{
         .card{
+            transition: all 300ms;
+
             &:hover{
                 transform: scale(1.04) translateY(-5px);
-                transition: all 300ms;
                 box-shadow: 0 20px 20px rgba(145, 40, 72, 0.74);
             }
             
@@ -262,13 +206,17 @@ section{
                         td{
                             padding: 5px;
                             padding-left: 10px;
-                            font-size: 15px;
+                            font-size: 1rem;
                         }
 
                         th{
                             color: $colorVerde;
-                            font-size: 1.3rem;
-                            padding: 10px;
+                            font-size: 1.05rem;
+                            padding: 5px;
+
+                            img{
+                                max-width: 50px;
+                            }
                         }
                     }
                 }
@@ -309,7 +257,7 @@ section{
 
 /*GALERIA*/
 .galeria{
-    @include flex( row, wrap, center, center)
+    @include flex( row, wrap, center, center);
 
     img{
         width: 28vw;
@@ -330,8 +278,8 @@ section{
 /*ACLARACIONES*/
 section{
     .caja1{
-        @include box( $colorFondoVerde, $colorVerde, 70px, 0 0 10px $colorVerde, 17px, auto, 5vw, 5vw, 5vw, 5vw, 35px, left)
-        @include flex(column, wrap, space-around, center)
+        @include box( $colorFondoVerde, $colorVerde, 70px, 0 0 10px $colorVerde, 17px, auto, 5vw, 5vw, 5vw, 5vw, 35px, left);
+        @include flex(column, wrap, space-around, center);
         
         div{
             img{
@@ -357,6 +305,7 @@ section{
         
         ul{
             list-style-image: url("../img/destellos.png");
+            padding: 0;
     
             li{
                 list-style-position: inside;
@@ -408,14 +357,14 @@ section{
 
     &__fieldset{
         border: 5px solid rgba(184, 242, 230, 0.767);
-        width: 60vw;
+        width: 85vw;
         border-radius: $borde;
         padding-top: 20px;
         padding-bottom: 20px;
     }
 
     &__input{
-        @include box( $colorLila, $colorRosa, $borde, 0 0 5ps rgba(145, 40, 72, 0.74), 15px, 70vw, 5px, 5px, 5px, 5px, 8px, auto)
+        @include box( $colorLila, $colorRosa, $borde, 0 0 5px rgba(145, 40, 72, 0.74), 15px, 70vw, 5px, 5px, 5px, 5px, 8px, left);
         border: 2px solid rgb(231, 198, 215);
 
         &--newsletter{
@@ -423,7 +372,7 @@ section{
         }
 
         &--enviar{
-            @include box( $colorLila, $colorVerdeA, $borde, 0 0 5ps rgba(145, 40, 72, 0.74), 20px, 30vw, 15px, 5px, 5px, 5px, 8px, auto)
+            @include box( $colorLila, $colorVerdeA, $borde, 0 0 5px rgba(145, 40, 72, 0.74), 20px, 70vw, 15px, 5px, 5px, 5px, 3px, auto);
             border: 2px solid rgb(231, 198, 215);
             font-weight: 600;
             letter-spacing: 1.2px;
@@ -441,17 +390,12 @@ section{
 
     &__archivo{
         text-align-last: center;
-        width: 85vw;
+        width: 70vw;
     }
 
     &__gifdos{
+        @extend .contacto__gif;
         grid-area: gifdos;
-        width: 40vw;
-        transition: all 300ms;
-
-        &:hover{
-            transform: scale(1.2,1.2);
-        }
     }
 }
 /*FIN CONTACTO*/
@@ -459,43 +403,40 @@ section{
 
 /*FOOTER*/
 .footer{
-    @include flex( row, wrap, space-evenly, center)
+    @include flex( row, wrap, center, center);
     background-color: rgba(250, 243, 221, 0.575);
-    height: 100%;
-    margin-top: 40px;
+    padding: 20px;
+    margin-top: 20px;
 
-    nav{
-        ul{
-            padding: 0;
-
-            li{
-                padding: 5px;
-                list-style: none;
-                display: list-item;
-                text-align: left;
-                transition: 0.5s; 
-
-                &:hover{
-                    background-color: rgb(231, 198, 215);
-                    border-radius: 200px 200px 200px 200px;
-                }
-
-                a{    
-                    text-decoration: none;
-                    color: $colorVerde;
-                    font-size: 15px;
-                    font-weight: 600;
-                    padding: 5px;
-                    
+    &_nav{
+        nav{
+            ul{
+                padding: 0;
+                margin: 0;
+                li{
+                    padding: 3px;
+                    list-style: none;
+                    text-align: left;
+                    transition: 0.5s; 
+    
                     &:hover{
-                        color: white;
+                        background-color: rgb(231, 198, 215);
+                        border-radius: 200px 200px 200px 200px;
+                    }
+    
+                    a{    
+                        text-decoration: none;
+                        color: $colorVerde;
+                        font-size: 15px;
+                        padding: 5px;
                     }
                 }
             }
         }
     }
 
-    div{
+    &_img{
+        margin: 20px;
         a{
             text-decoration: none;
             margin: 5px;
@@ -511,9 +452,13 @@ section{
         }
     }
 
-    div{
-        iframe{
-            margin: 20px;
+    &_direction{
+        margin-top: 5px;
+
+        a{
+            text-decoration: none;
+            color: $colorVerde;
+            font-size: 1rem;
         }
     }
 }
@@ -523,19 +468,15 @@ section{
 /*ERROR*/
 .error{
     background-image: url("../img/error.png");
-    background-repeat: no-repeat;
     height: 70vw;
     background-size: cover;
 
     button{
-        background-color: $colorVerde;
-        border-radius: $borde;
+        background: none;
+        border-radius: 5px;
         border-color: $colorVerde;
-        display: flex;
-        flex-direction: row;
         position: absolute;
-        padding: 0.3vw;
-        width: 10vw;
+        width: 12vw;
         left: 40Vw;
         top: 34vw;
         transition: all 300ms;
@@ -543,15 +484,14 @@ section{
         &:hover{
             transform: scale(1.08) translateY(-5px);
             cursor: pointer;
-            transition: all 300ms;
-            box-shadow: 0 10px 10px rgb(64, 119, 118);
+            box-shadow: 0 3px 3px rgb(64, 119, 118);
         }
 
         a{
             text-decoration: none;
-            font-size: 1.3vw;
-            color: rgb(147, 95, 167);
-            width: 100%;
+            font-size: 1rem;
+            color: $colorRosa;
+            font-weight: 600;
         }
     }
 }
@@ -566,11 +506,10 @@ section{
 /*pantallas medianas*/
 @media only screen and (min-width:600px){
 
-
     /*ACLARACIONES*/
     section{
         .caja1{
-            @include flex( row, wrap, space-around, baseline)
+            @include flex( row, wrap, space-around, baseline);
     
             div{
                 width: 30vw;
@@ -582,6 +521,25 @@ section{
         }
     }
     /*FIN ACLARACIONES*/
+
+
+    /*FOOTER*/
+    .footer{
+    
+        &_img{
+            margin-left: 70px;
+            margin-right: 70px;
+        }
+
+        &_nav{
+            margin-bottom: 20px;
+        }
+
+        &_direction{
+            display: none;
+        }
+    }
+    /*FIN FOOTER*/
 }
 
 /*pantalla normal*/
@@ -596,7 +554,7 @@ section{
         }
     
         .caja2{
-            @include flex( row, nowrap, space-around, flex-start)
+            @include flex( row, nowrap, space-around, flex-start);
             border-radius: 70px 175px 70px 70px;
         
             ul{
@@ -626,7 +584,11 @@ section{
         }
 
         &__input{
-            width: 30vw;        
+            width: 30vw;      
+            
+            &--enviar{
+                width: 30vw;
+            }
         }
 
         &__archivo{
@@ -644,4 +606,12 @@ section{
         }
     }
     /*FIN CONTACTO*/
+
+    /*FOOTER*/
+    .footer{
+        &_nav{
+            margin-bottom: 0;
+        }
+    }
+    /*FIN FOOTER*/
 }
